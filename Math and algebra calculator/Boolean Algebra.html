@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>Boolean Algebra Simplifier</title>
+  <style>body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .calculator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Boolean Algebra Simplifier</h1>
+
+    <label for="booleanExpression">Enter Boolean Expression:</label>
+    <input type="text" id="booleanExpression" placeholder="e.g., A AND B OR C">
+
+    <button onclick="simplify()">Simplify</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>function simplify() {
+    const expression = document.getElementById('booleanExpression').value;
+  
+    try {
+      const result = simplifyBooleanExpression(expression);
+      const resultElement = document.getElementById('result');
+      resultElement.innerHTML = `Simplified Expression: ${result}`;
+    } catch (error) {
+      alert('Invalid boolean expression. Please enter a valid expression.');
+    }
+  }
+  
+  function simplifyBooleanExpression(expression) {
+    // Simple example: removes spaces and converts to uppercase
+    return expression.replace(/\s/g, '').toUpperCase();
+  }
+  </script>
+</body>
+</html>
+
+

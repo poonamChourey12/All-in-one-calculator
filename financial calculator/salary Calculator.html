@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculator</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <h1>Salary Calculator</h1>
+        <label for="grossSalary">Gross salary:</label>
+        <input type="number" id="grossSalary" required>
+        <label for="deductions">Deductions:</label>
+        <input type="number" id="deductions" required>
+        <label for="bonuses">Bonuses:</label>
+        <input type="number" id="bonuses" required>
+        <button onclick="calculateNetSalary()">Calculate Net Salary</button>
+        <h2 id="netSalary">Net Salary: </h2>
+    </div>
+
+    <script>
+        function calculateNetSalary() {
+            const grossSalary = parseFloat(document.getElementById('grossSalary').value);
+            const deductions = parseFloat(document.getElementById('deductions').value);
+            const bonuses = parseFloat(document.getElementById('bonuses').value);
+
+            const netSalary = grossSalary - deductions + bonuses;
+
+            document.getElementById('netSalary').innerText = `Net Salary: ${netSalary.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

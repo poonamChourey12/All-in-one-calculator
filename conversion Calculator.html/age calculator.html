@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .calculator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  </style>
+  <title>Age Calculator</title>
+
+</head>
+<body>
+  <div class="calculator">
+    <h1>Age Calculator</h1>
+
+    <label for="birthdate">Enter Your Birthdate:</label>
+    <input type="date" id="birthdate">
+
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+   function calculateAge() {
+  const birthdateInput = document.getElementById('birthdate');
+  const birthdate = new Date(birthdateInput.value);
+  
+  if (isNaN(birthdate.getTime())) {
+    alert('Please enter a valid birthdate.');
+    return;
+  }
+
+  const currentDate = new Date();
+  const ageInMilliseconds = currentDate - birthdate;
+
+  const ageInYears = Math.floor(ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000));
+  
+  const resultElement = document.getElementById('result');
+  resultElement.innerHTML = `Your age is ${ageInYears} years.`;
+}
+ 
+  </script>
+</body>
+</html>

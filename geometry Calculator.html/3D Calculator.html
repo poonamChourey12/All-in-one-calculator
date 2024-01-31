@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>3D Distance Calculator</title>
+  <style>body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .calculator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust the width as needed */
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #result3D {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>3D Distance Calculator</h1>
+
+    <label for="x1">Point 1 - X:</label>
+    <input type="number" id="x1" placeholder="Enter x-coordinate">
+
+    <label for="y1">Point 1 - Y:</label>
+    <input type="number" id="y1" placeholder="Enter y-coordinate">
+
+    <label for="z1">Point 1 - Z:</label>
+    <input type="number" id="z1" placeholder="Enter z-coordinate">
+
+    <label for="x2">Point 2 - X:</label>
+    <input type="number" id="x2" placeholder="Enter x-coordinate">
+
+    <label for="y2">Point 2 - Y:</label>
+    <input type="number" id="y2" placeholder="Enter y-coordinate">
+
+    <label for="z2">Point 2 - Z:</label>
+    <input type="number" id="z2" placeholder="Enter z-coordinate">
+
+    <button onclick="calculate3DDistance()">Calculate Distance</button>
+
+    <div id="result3D"></div>
+  </div>
+
+  <script>function calculate3DDistance() {
+    const x1 = parseFloat(document.getElementById('x1').value);
+    const y1 = parseFloat(document.getElementById('y1').value);
+    const z1 = parseFloat(document.getElementById('z1').value);
+    const x2 = parseFloat(document.getElementById('x2').value);
+    const y2 = parseFloat(document.getElementById('y2').value);
+    const z2 = parseFloat(document.getElementById('z2').value);
+  
+    if (isNaN(x1) || isNaN(y1) || isNaN(z1) || isNaN(x2) || isNaN(y2) || isNaN(z2)) {
+      alert('Please enter valid coordinates.');
+      return;
+    }
+  
+    const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2) + Math.pow(z2 - z1, 2));
+  
+    const resultElement = document.getElementById('result3D');
+    resultElement.innerHTML = `Distance between points: ${distance.toFixed(2)}`;
+  }
+  </script>
+</body>
+</html>

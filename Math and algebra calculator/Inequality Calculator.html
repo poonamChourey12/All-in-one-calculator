@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Inequality Calculator</title>
+  <style>body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .calculator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Inequality Calculator</h1>
+
+    <label for="inequalityExpression">Enter Inequality Expression:</label>
+    <input type="text" id="inequalityExpression" placeholder="e.g., 2x + 3 < 7">
+
+    <button onclick="solveInequality()">Solve</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script></script>
+</body>
+</html>
+function solveInequality() {
+    const inequalityExpression = document.getElementById('inequalityExpression').value;
+  
+    try {
+      const result = solveLinearInequality(inequalityExpression);
+      const resultElement = document.getElementById('result');
+      resultElement.innerHTML = `Solution Set: ${result}`;
+    } catch (error) {
+      alert('Invalid inequality expression. Please enter a valid expression.');
+    }
+  }
+  
+  function solveLinearInequality(inequalityExpression) {
+    // Simple example: assumes the expression is in the form "ax + b < c"
+    const match = inequalityExpression.match(/([+\-]?\d*)\s*x\s*([<>])\s*([+\-]?\d+)/);
+  
+    if (!match) {
+      throw new Error('Invalid linear inequality.');
+    }
+  
+    const coefficient = match[1] ? parseInt(match[1]) : 1;
+    const operator = match[2];
+    const constant = parseInt(match[3]);
+  
+    let solutionSet;
+  
+    switch (operator) {
+      case '<':
+        solutionSet = `x < ${(constant / coefficient).toFixed(2)}`;
+        break;
+      case '>':
+        solutionSet = `x > ${(constant / coefficient).toFixed(2)}`;
+        break;
+      default:
+        throw new Error('Invalid operator.');
+    }
+  
+    return solutionSet;
+  }
+  

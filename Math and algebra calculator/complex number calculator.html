@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Complex Number Calculator</title>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Complex Number Calculator</h1>
+
+    <label for="real1">Real Part (Number 1):</label>
+    <input type="number" id="real1" placeholder="Enter real part">
+
+    <label for="imag1">Imaginary Part (Number 1):</label>
+    <input type="number" id="imag1" placeholder="Enter imaginary part">
+
+    <label for="real2">Real Part (Number 2):</label>
+    <input type="number" id="real2" placeholder="Enter real part">
+
+    <label for="imag2">Imaginary Part (Number 2):</label>
+    <input type="number" id="imag2" placeholder="Enter imaginary part">
+
+    <button onclick="add()">Add</button>
+    <button onclick="subtract()">Subtract</button>
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
